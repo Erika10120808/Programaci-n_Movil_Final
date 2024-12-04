@@ -1,0 +1,31 @@
+{
+  "database": "AniManga.db",
+  "version": 1,
+  "encrypted": false,
+  "mode": "full",
+  "tables": [
+    {
+      "name": "usuarios",
+      "schema": [
+        { "column": "id", "value": "INTEGER PRIMARY KEY AUTOINCREMENT" },
+        { "column": "email", "value": "TEXT NOT NULL UNIQUE" },
+        { "column": "nombre", "value": "TEXT NOT NULL" },
+        { "column": "apellido", "value": "TEXT NOT NULL" },
+        { "column": "nivel_educacional", "value": "TEXT NOT NULL" },
+        { "column": "fecha_nacimiento", "value": "TEXT NOT NULL" },
+        { "column": "password", "value": "TEXT NOT NULL" }
+      ]
+    },
+    {
+      "name": "productos_anime",
+      "schema": [
+        { "column": "id", "value": "INTEGER PRIMARY KEY AUTOINCREMENT" },
+        { "column": "nombre", "value": "TEXT NOT NULL" },
+        { "column": "codigo", "value": "TEXT NOT NULL" },
+        { "column": "valor", "value": "INTEGER NOT NULL" },
+        { "column": "cantidad", "value": "INTEGER NOT NULL DEFAULT 1" },
+        { "column": "seleccionado", "value": "BOOLEAN NOT NULL DEFAULT 0" }
+      ]
+    }
+  ]
+}

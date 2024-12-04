@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Carrito de Compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="items.length > 0; else carritoVacio">
+    <ion-list>
+      <ion-item *ngFor="let item of items">
+        <ion-label>
+          <h2>{{ item.nombre }}</h2>
+          <p>Código: {{ item.codigo }}</p>
+          <p>Valor: ${{ (item.valor * item.cantidad) | number }}</p>
+          <p>Cantidad: {{ item.cantidad }}</p>
+          <p>Valor: ${{ item.totalValor | number }}</p>
+
+        </ion-label>
+        <ion-button fill="clear" (click)="disminuirCantidad(item)">-</ion-button>
+        <ion-button fill="clear" (click)="aumentarCantidad(item)">+</ion-button>
+        <ion-button color="danger" fill="clear" (click)="eliminarItem(item.codigo)">Eliminar</ion-button>
+      </ion-item>
+      
+    </ion-list>
+  </ion-card>
+  <ng-template #carritoVacio>
+    <p>El carrito está vacío.</p>
+  </ng-template>
+</ion-content>

@@ -1,0 +1,137 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7e8f6;
+  padding: 20px;
+}
+
+.login-card {
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  animation: zoomIn 5s ease-in-out-infinite alternates;
+}
+
+.logo {
+  color: white;
+  opacity: 1; 
+  background: blue;
+  margin: 10px;
+  width: 150px; 
+  height: auto; 
+  border-radius: 10px; 
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+}
+.login-title {
+  text-align: center;
+  font-size: 2em;
+  color: #f497e5;
+  margin-bottom: 20px;
+}
+
+.input-item {
+  --color-focused: #f497e5;
+  --highlight-color-focused: #f497e5;
+  color: #f497e5;
+}
+
+ion-label {
+  color: #f497e5;
+}
+
+ion-input {
+  color: #f497e5;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.title-animation {
+  animation: slideInLeft 1s ease-out;
+}
+
+
+.login-button,
+.register-button {
+  --background: #f497e5;
+  --background-hover: #f7c7e6;
+  --background-activated: #f497e5;
+  color: white;
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  color: #f497e5;
+  text-decoration: none;
+  font-size: 0.9em;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .login-title {
+    font-size: 1.5em;
+  }
+
+  .input-item,
+  ion-label,
+  ion-input {
+    font-size: 0.9em;
+  }
+
+  .forgot-password a {
+    font-size: 0.8em;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .login-card {
+    width: 80%;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .login-title {
+    font-size: 1.8em;
+  }
+}

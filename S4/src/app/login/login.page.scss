@@ -1,0 +1,161 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7e8f6;
+  padding: 20px;
+}
+
+.login-card {
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f497e5, #f7c7e6);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.login-title {
+  text-align: center;
+  font-size: 2em;
+  color: #f497e5;
+  margin-bottom: 20px;
+  animation: slideInLeft 1s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.input-item {
+  --color-focused: #f497e5;
+  --highlight-color-focused: #f497e5;
+  color: #f497e5;
+}
+
+ion-label {
+  color: #f497e5;
+}
+
+ion-input {
+  color: #f497e5;
+}
+
+.login-button,
+.register-button {
+  --background: #f497e5;
+  --background-hover: #f7c7e6;
+  --background-activated: #f497e5;
+  color: white;
+  margin-top: 10px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.forgot-password a {
+  color: #f497e5;
+  text-decoration: none;
+  font-size: 0.9em;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .login-title {
+    font-size: 1.5em;
+  }
+
+  .input-item,
+  ion-label,
+  ion-input {
+    font-size: 0.9em;
+  }
+
+  .forgot-password a {
+    font-size: 0.8em;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .login-card {
+    width: 80%;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .login-title {
+    font-size: 1.8em;
+  }
+}
