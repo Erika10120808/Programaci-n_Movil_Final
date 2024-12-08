@@ -1,34 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Carrito de Compras</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> 
+    </ion-buttons>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
+
   <ion-card *ngIf="items.length > 0">
     <ion-card-header>
       <ion-card-title>Artículos en el Carrito</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let item of items">
+        <ion-item *ngFor="let item of items" class="item-container">
           <ion-label>
             <h2>{{ item.nombre }}</h2>
             <p>Código: {{ item.codigo }}</p>
             <p>Valor: ${{ item.valor | number }}</p>
-            <p>Cantidad: {{ item.cantidad | number }}</p>
+            <div class="cantidad-container">
+              <ion-button fill="clear" color="danger" (click)="aumentarCantidad(item)">
+                <ion-icon name="bag-add-outline"></ion-icon>
+              </ion-button>
+              {{ item.cantidad | number }}
+              <ion-button fill="clear" color="danger" (click)="disminuirCantidad(item)">
+                <ion-icon name="bag-remove-outline"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" color="danger" (click)="eliminarItem(item.codigo)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
+            </div>
             <p>Total: ${{ item.totalValor | number }}</p>
           </ion-label>
-          <ion-button fill="clear" color="danger" (click)="eliminarItem(item.codigo)">
-            Eliminar
-          </ion-button>
-          <ion-button fill="clear" color="danger" (click)="aumentarCantidad(item)">
-            agregar
-          </ion-button>
-          <ion-button fill="clear" color="danger" (click)="disminuirCantidad(item)">
-            quitar
-          </ion-button>
-
         </ion-item>
       </ion-list>
     </ion-card-content>
@@ -39,7 +45,7 @@
       <p>Tu carrito está vacío.</p>
     </ion-card-content>
   </ion-card>
-
+  <ion-button expand="block" (click)="goToLogin()">pagar</ion-button>
   <ion-button expand="block" (click)="goToPrincipal()">Volver a la Tienda</ion-button>
   <ion-button expand="block" (click)="goToLogin()">Volver al Login</ion-button>
 </ion-content>

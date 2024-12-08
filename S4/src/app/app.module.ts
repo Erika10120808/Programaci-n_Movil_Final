@@ -9,7 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { defineCustomElements as jeepSqlite } from 'jeep-sqlite/loader';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthGuard } from './guards/auth.guard'; 
+import { AuthGuard } from './guards/auth.guard';
+
 
 jeepSqlite(window);
 
@@ -20,8 +21,9 @@ jeepSqlite(window);
     IonicModule.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule, 
-  ],
+    HttpClientModule,
+
+],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, 
     AuthGuard 

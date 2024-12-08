@@ -40,8 +40,17 @@ ion-header {
   
   p {
     color: #888888;
-    text-align: center;
+    text-align: left;
     font-size: 1.2em;
     margin-top: 20px;
   }
+  .item-container {
+    display: flex;
+    align-items: flex-start; /* Alinea verticalmente al centro */
+    justify-content: space-between; /* Espacio entre los elementos */
+  }
   
+  .cantidad-container {
+    display: flex;
+    align-items: center; /* Alinea verticalmente al centro */
+  }

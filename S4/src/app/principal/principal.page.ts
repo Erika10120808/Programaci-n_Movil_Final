@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoadingController, ToastController } from '@ionic/angular';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-principal',
@@ -17,7 +18,7 @@ export class PrincipalPage {
     { nombre: 'Llaveros de Demon Slayer', codigo: 'AN005', valor: 3000, seleccionado: false, cantidad:1,total: 3000,totalValor:0  },
   ];
 
-  carrito: any[] = [];
+  public carrito: any[] = [];
   searchQuery: string = '';
   mangaDescriptions: string[] = [];
 
@@ -25,13 +26,16 @@ export class PrincipalPage {
     private router: Router,
     private http: HttpClient,
     private loadingCtrl: LoadingController,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private cartService: CartService,
   ) {}
 
   async agregarAlCarrito() {
     const seleccionados = this.animeItems.filter((item) => item.seleccionado);
     if (seleccionados.length > 0) {
       this.carrito.push(...seleccionados);
+      console.log('Carrito actual:', this.carrito);
+      this.cartService.agregarAlCarrito(this.carrito);
       const toast = await this.toastCtrl.create({
         message: 'Artículos agregados al carrito.',
         duration: 2000,
@@ -89,5 +93,9 @@ export class PrincipalPage {
   clearSearch() {
     this.searchQuery = '';
     this.mangaDescriptions = [];
+  }
+  onCheckboxChange(item: any) {
+    console.log('Checkbox changed for item:', item);
+    
   }
 }

@@ -65,3 +65,33 @@ ion-content {
     border-radius: 10px;
   }
   
+  .carrito-compras {
+    --background: #e75480;
+    --background-hover: #ff9b9f;
+    width: 35px;
+    height: 35px;
+
+
+  }
+  .menu-container{
+    --background: #f497e5;
+    --background-hover: #f7c7e6;
+    --background-activated: #f497e5;
+    color: white;
+  }
+
+  .icon-cart{
+    width: 35px;
+    height: 35px;
+    color: black;
+  }
+
+  ion-menu::part(backdrop) {
+    background-color: rgba(255, 0, 255, 0.5);
+  }
+  
+  ion-menu::part(container) {
+    border-radius: 0 20px 20px 0;
+  
+    box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
+  }

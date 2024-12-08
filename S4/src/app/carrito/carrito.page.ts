@@ -38,10 +38,11 @@ export class CarritoPage {
   }
 
   disminuirCantidad(item: any) {
-    if(item.cantidad == 0){
-      this.eliminarItem(item.cantidad)
+    console.log("disminuirCantidad cantidad" +  item.cantidad)
+    if(item.cantidad == 1){
+      this.eliminarItem(item.codigo)
     }
-    if (item.cantidad >= 1) {
+    if (item.cantidad > 1) {
       item.cantidad--;
       item.totalValor = item.cantidad * item.valor;
     }

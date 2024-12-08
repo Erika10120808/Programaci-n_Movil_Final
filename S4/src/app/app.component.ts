@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { MenuController, Platform } from '@ionic/angular';
 import { Device } from '@capacitor/device';
 import { SqliteService } from './services/sqlite.service';
+import { Router } from '@angular/router';
+import { CartService } from './services/cart.service';
+
 
 
 
@@ -15,13 +18,20 @@ export class AppComponent {
 
   public isWeb: boolean;
   public load: boolean;
+  public carrito:any;
   constructor(
+    private menuCtrl: MenuController,
     private platform: Platform,
-    private sqlite: SqliteService
+    private sqlite: SqliteService,
+    private router: Router,
+    private cartService: CartService
   ) {
     this.isWeb = false;
     this.load = false;
     this.initApp();
+    this.cartService.carrito$.subscribe((items) => {
+      this.carrito = items;
+    });
   }
 
   async initApp() {
@@ -36,5 +46,18 @@ export class AppComponent {
         this.load = load;
       })
     })
+  }
+  goToLogin() {
+    this.router.navigate(['/login']);
+    this.menuCtrl.close();
+
+  }
+  goToPrincipal(){
+    this.router.navigate(['/principal']);
+    this.menuCtrl.close();
+  };
+  irAlCarrito() {
+    this.router.navigate(['/carrito'], { state: { carrito: this.carrito } });
+    this.menuCtrl.close();
   }
 }
