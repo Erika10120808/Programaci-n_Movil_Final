@@ -15,14 +15,16 @@
       <ion-card-title>Artículos de Anime</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+     
       <ion-list>
         <ion-item *ngFor="let item of animeItems">
-          <ion-checkbox slot="start" [(ngModel)]="item.seleccionado"></ion-checkbox>
+          <ion-checkbox slot="start" [(ngModel)]="item.seleccionado">
           <ion-label>
             <h2>{{ item.nombre }}</h2>
             <p>Código: {{ item.codigo }}</p>
             <p>Valor: ${{ item.valor | number }}</p>
           </ion-label>
+        </ion-checkbox>
         </ion-item>
       </ion-list>
       <ion-button expand="block" (click)="agregarAlCarrito()">Agregar al Carrito</ion-button>

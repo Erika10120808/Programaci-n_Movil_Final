@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { SqliteService } from '../services/sqlite.service';
+import { AuthService} from '../services/auth.service'
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginPage {
   constructor(
     private router: Router,
     private alertController: AlertController,
-    private sqliteService: SqliteService
+    private sqliteService: SqliteService,
+    private authService: AuthService
   ) {}
 
   async onLogin() {
@@ -33,10 +35,11 @@ export class LoginPage {
     }
 
     try {
-      
+
       const isValid = await this.sqliteService.validateUser(this.email, this.password);
+     
       if (isValid) {
-        
+        await this.authService.login(this.email,this.password);
         this.router.navigate(['/principal'], { state: { email: this.email } });
       } else {
         await this.showAlert('Error', 'Credenciales incorrectas. Por favor, verifica tu email o contraseña.');

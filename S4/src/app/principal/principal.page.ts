@@ -10,11 +10,11 @@ import { LoadingController, ToastController } from '@ionic/angular';
 })
 export class PrincipalPage {
   animeItems = [
-    { nombre: 'Figura de Naruto', codigo: 'AN001', valor: 15000, seleccionado: false },
-    { nombre: 'Póster de One Piece', codigo: 'AN002', valor: 5000, seleccionado: false },
-    { nombre: 'Camiseta de Attack on Titan', codigo: 'AN003', valor: 12000, seleccionado: false },
-    { nombre: 'Taza de My Hero Academia', codigo: 'AN004', valor: 8000, seleccionado: false },
-    { nombre: 'Llaveros de Demon Slayer', codigo: 'AN005', valor: 3000, seleccionado: false },
+    { nombre: 'Figura de Naruto', codigo: 'AN001', valor: 15000, seleccionado: false, cantidad:1,total: 15000,totalValor:0 },
+    { nombre: 'Póster de One Piece', codigo: 'AN002', valor: 5000, seleccionado: false , cantidad:1,total: 5000,totalValor:0 },
+    { nombre: 'Camiseta de Attack on Titan', codigo: 'AN003', valor: 12000, seleccionado: false, cantidad:1,total: 12000,totalValor:0  },
+    { nombre: 'Taza de My Hero Academia', codigo: 'AN004', valor: 8000, seleccionado: false, cantidad:1,total: 8000,totalValor:0  },
+    { nombre: 'Llaveros de Demon Slayer', codigo: 'AN005', valor: 3000, seleccionado: false, cantidad:1,total: 3000,totalValor:0  },
   ];
 
   carrito: any[] = [];

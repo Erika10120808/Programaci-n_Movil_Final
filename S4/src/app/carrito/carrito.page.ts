@@ -19,16 +19,29 @@ export class CarritoPage {
     const state = navigation?.extras?.state;
     if (state && state['carrito']) {
       this.items = state['carrito'];
+      console.log(this.items)
     }
   }
 
   aumentarCantidad(item: any) {
+    console.log("aumentando" +  item)
+    console.log("cantidad" +  item['cantidad'])
+    console.log("cantidad" +  item.cantidad)
+    console.log("totalValor" +  item['totalValor'])
+    console.log("totalValor" +  item.totalValor)
+    console.log("valor" +  item['valor'])
+    console.log("valor" +  item.valor)
+    
+
     item.cantidad++;
     item.totalValor = item.cantidad * item.valor;
   }
 
   disminuirCantidad(item: any) {
-    if (item.cantidad > 1) {
+    if(item.cantidad == 0){
+      this.eliminarItem(item.cantidad)
+    }
+    if (item.cantidad >= 1) {
       item.cantidad--;
       item.totalValor = item.cantidad * item.valor;
     }

@@ -16,12 +16,19 @@
             <h2>{{ item.nombre }}</h2>
             <p>Código: {{ item.codigo }}</p>
             <p>Valor: ${{ item.valor | number }}</p>
-            <p>Cantidad: {{ item.cantidad }}</p>
+            <p>Cantidad: {{ item.cantidad | number }}</p>
             <p>Total: ${{ item.totalValor | number }}</p>
           </ion-label>
           <ion-button fill="clear" color="danger" (click)="eliminarItem(item.codigo)">
             Eliminar
           </ion-button>
+          <ion-button fill="clear" color="danger" (click)="aumentarCantidad(item)">
+            agregar
+          </ion-button>
+          <ion-button fill="clear" color="danger" (click)="disminuirCantidad(item)">
+            quitar
+          </ion-button>
+
         </ion-item>
       </ion-list>
     </ion-card-content>

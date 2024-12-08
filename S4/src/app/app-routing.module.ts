@@ -15,16 +15,17 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./Home/home.module').then((m) => m.HomePageModule),
+    canActivate: [AuthGuard] 
   },
   {
     path: 'principal',
     loadChildren: () => import('./principal/principal.module').then((m) => m.PrincipalPageModule),
-    //canActivate: [AuthGuard], 
+    canActivate: [AuthGuard]
   },
   {
     path: 'carrito',
     loadChildren: () => import('./carrito/carrito.module').then((m) => m.CarritoPageModule),
-    //canActivate: [AuthGuard], 
+    canActivate: [AuthGuard]
   },
 ];
 

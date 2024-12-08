@@ -39,7 +39,6 @@ export class AuthService {
    */
   async login(email: string, password: string): Promise<boolean> {
     const users = await this.sqliteService.query('usuarios', 'email', email);
-
     if (users.length > 0 && users[0].password === password) {
       await this.sqliteService.setPreference('userEmail', email);
       await this.sqliteService.setPreference('userPassword', password);
