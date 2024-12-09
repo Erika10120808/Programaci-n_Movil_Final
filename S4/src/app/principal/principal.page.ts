@@ -5,9 +5,10 @@ import { LoadingController, ToastController } from '@ionic/angular';
 import { CartService } from '../services/cart.service';
 
 @Component({
-  selector: 'app-principal',
-  templateUrl: './principal.page.html',
-  styleUrls: ['./principal.page.scss'],
+    selector: 'app-principal',
+    templateUrl: './principal.page.html',
+    styleUrls: ['./principal.page.scss'],
+    standalone: false
 })
 export class PrincipalPage {
   animeItems = [

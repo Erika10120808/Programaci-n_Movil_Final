@@ -32,7 +32,15 @@
               }
             ],
             "styles": ["src/global.scss"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "crypto-browserify"
+            ],
+            "resolve": {
+              "fallback": {
+                "crypto": "crypto-browserify"
+              }
+            }
           },
           "configurations": {
             "production": {

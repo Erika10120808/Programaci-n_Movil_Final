@@ -3,9 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-carrito',
-  templateUrl: './carrito.page.html',
-  styleUrls: ['./carrito.page.scss'],
+    selector: 'app-carrito',
+    templateUrl: './carrito.page.html',
+    styleUrls: ['./carrito.page.scss'],
+    standalone: false
 })
 export class CarritoPage {
   items: any[] = []; 
