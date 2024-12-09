@@ -3,20 +3,21 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { CartService } from '../services/cart.service';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
-    selector: 'app-principal',
-    templateUrl: './principal.page.html',
-    styleUrls: ['./principal.page.scss'],
-    standalone: false
+  selector: 'app-principal',
+  templateUrl: './principal.page.html',
+  styleUrls: ['./principal.page.scss'],
+  standalone: false
 })
 export class PrincipalPage {
   animeItems = [
-    { nombre: 'Figura de Naruto', codigo: 'AN001', valor: 15000, seleccionado: false, cantidad:1,total: 15000,totalValor:0 },
-    { nombre: 'Póster de One Piece', codigo: 'AN002', valor: 5000, seleccionado: false , cantidad:1,total: 5000,totalValor:0 },
-    { nombre: 'Camiseta de Attack on Titan', codigo: 'AN003', valor: 12000, seleccionado: false, cantidad:1,total: 12000,totalValor:0  },
-    { nombre: 'Taza de My Hero Academia', codigo: 'AN004', valor: 8000, seleccionado: false, cantidad:1,total: 8000,totalValor:0  },
-    { nombre: 'Llaveros de Demon Slayer', codigo: 'AN005', valor: 3000, seleccionado: false, cantidad:1,total: 3000,totalValor:0  },
+    { nombre: 'Figura de Naruto', codigo: 'AN001', valor: 15000, seleccionado: false, cantidad: 1, total: 15000, totalValor: 0 },
+    { nombre: 'Póster de One Piece', codigo: 'AN002', valor: 5000, seleccionado: false, cantidad: 1, total: 5000, totalValor: 0 },
+    { nombre: 'Camiseta de Attack on Titan', codigo: 'AN003', valor: 12000, seleccionado: false, cantidad: 1, total: 12000, totalValor: 0 },
+    { nombre: 'Taza de My Hero Academia', codigo: 'AN004', valor: 8000, seleccionado: false, cantidad: 1, total: 8000, totalValor: 0 },
+    { nombre: 'Llaveros de Demon Slayer', codigo: 'AN005', valor: 3000, seleccionado: false, cantidad: 1, total: 3000, totalValor: 0 },
   ];
 
   public carrito: any[] = [];
@@ -95,8 +96,21 @@ export class PrincipalPage {
     this.searchQuery = '';
     this.mangaDescriptions = [];
   }
+
   onCheckboxChange(item: any) {
     console.log('Checkbox changed for item:', item);
-    
+  }
+
+ 
+  async takePicture() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Uri,
+      source: CameraSource.Camera,
+    });
+
+    const imageUrl = image.webPath;
+    console.log('Image URL:', imageUrl);
   }
 }

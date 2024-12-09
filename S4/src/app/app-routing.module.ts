@@ -27,6 +27,18 @@ const routes: Routes = [
     loadChildren: () => import('./carrito/carrito.module').then((m) => m.CarritoPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+  },
+  {
+    path: 'camera',
+    loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule)
+  },
 ];
 
 @NgModule({

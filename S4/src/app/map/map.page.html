@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mapa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <google-map height="400px" width="100%" [center]="{ lat: lat, lng: lng }" [zoom]="15">
+    <map-marker [position]="{ lat: lat, lng: lng }"></map-marker>
+  </google-map>
+  <div class="ion-padding">
+    <p>Latitud: {{ lat }}</p>
+    <p>Longitud: {{ lng }}</p>
+  </div>
+</ion-content>

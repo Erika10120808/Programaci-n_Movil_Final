@@ -5,15 +5,14 @@ import { CapacitorHttp, HttpOptions, HttpResponse } from '@capacitor/core';
   providedIn: 'root',
 })
 export class CamaraService {
-  private readonly baseUrl = 'https://api.jikan.https://ionicframework.com/docs/native/camera /v4'; 
+  private readonly baseUrl = 'https://api.jikan.moe/v4'; // Corregir la URL base
 
   constructor() {}
 
- 
   async searchMangaDescriptions(query: string): Promise<string[]> {
     const options: HttpOptions = {
-      url: `${this.baseUrl}/manga`, 
-      params: { q: query, sfw: 'true' }, 
+      url: `${this.baseUrl}/manga`,
+      params: { q: query, sfw: 'true' },
     };
 
     try {
@@ -30,4 +29,3 @@ export class CamaraService {
     }
   }
 }
-

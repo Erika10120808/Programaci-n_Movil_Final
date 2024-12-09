@@ -12,7 +12,8 @@ import { PrincipalPage } from './principal.page';
     FormsModule,
     IonicModule,
     PrincipalPageRoutingModule,
-     
+    
+  
   ],
   declarations: [PrincipalPage],
 

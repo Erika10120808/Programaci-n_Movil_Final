@@ -23,7 +23,7 @@ export class CarritoPage {
       console.log(this.items)
     }
   }
-
+  
   aumentarCantidad(item: any) {
     console.log("aumentando" +  item)
     console.log("cantidad" +  item['cantidad'])
