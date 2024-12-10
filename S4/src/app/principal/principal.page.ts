@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { CartService } from '../services/cart.service';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Photo } from '@capacitor/camera';
+
 
 @Component({
   selector: 'app-principal',

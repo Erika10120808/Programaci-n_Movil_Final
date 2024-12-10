@@ -38,7 +38,7 @@ export class LoginPage {
     try {
 
       const isValid = await this.sqliteService.validateUser(this.email, this.password);
-     
+  
       if (isValid) {
         await this.authService.login(this.email,this.password);
         this.router.navigate(['/principal'], { state: { email: this.email } });

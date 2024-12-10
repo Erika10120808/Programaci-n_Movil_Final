@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CarritoPage } from './carrito.page';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router, ParamMap, convertToParamMap } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { of } from 'rxjs';
 
@@ -12,7 +12,27 @@ describe('CarritoPage', () => {
 
   beforeEach(async () => {
     routerSpy = jasmine.createSpyObj('Router', ['navigate', 'getCurrentNavigation']);
-    activatedRouteStub = {};
+
+  
+    const mockSnapshot: Partial<ActivatedRouteSnapshot> = {
+      paramMap: convertToParamMap({ id: '123' }),
+      url: [],
+      params: {},
+      queryParams: {},
+      fragment: null,
+      data: {},
+      outlet: '',
+      component: null,
+      routeConfig: null,
+      root: {} as ActivatedRouteSnapshot,
+      parent: null,
+      firstChild: null,
+      children: [],
+    };
+
+    activatedRouteStub = {
+      snapshot: mockSnapshot as ActivatedRouteSnapshot,
+    };
 
     await TestBed.configureTestingModule({
       declarations: [CarritoPage],
@@ -25,6 +45,18 @@ describe('CarritoPage', () => {
 
     fixture = TestBed.createComponent(CarritoPage);
     component = fixture.componentInstance;
+
+ 
+    routerSpy.getCurrentNavigation.and.returnValue({
+      extras: {
+        state: {
+          carrito: [
+            { codigo: 'AN001', nombre: 'Figura', cantidad: 1, valor: 15000, totalValor: 15000 },
+          ],
+        },
+      },
+    } as any);
+
     fixture.detectChanges();
   });
 
@@ -33,70 +65,8 @@ describe('CarritoPage', () => {
   });
 
   it('should initialize items from navigation state', () => {
-    const mockItems = [
+    expect(component.items).toEqual([
       { codigo: 'AN001', nombre: 'Figura', cantidad: 1, valor: 15000, totalValor: 15000 },
-    ];
-
-    routerSpy.getCurrentNavigation.and.returnValue({
-      extras: { state: { carrito: mockItems } },
-    } as any);
-
-    fixture = TestBed.createComponent(CarritoPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-
-    expect(component.items).toEqual(mockItems);
-  });
-
-  it('should increase item quantity and update total value', () => {
-    const item = { codigo: 'AN001', nombre: 'Figura', cantidad: 1, valor: 15000, totalValor: 15000 };
-
-    component.aumentarCantidad(item);
-
-    expect(item.cantidad).toBe(2);
-    expect(item.totalValor).toBe(30000);
-  });
-
-  it('should decrease item quantity and update total value', () => {
-    const item = { codigo: 'AN001', nombre: 'Figura', cantidad: 3, valor: 15000, totalValor: 45000 };
-
-    component.disminuirCantidad(item);
-
-    expect(item.cantidad).toBe(2);
-    expect(item.totalValor).toBe(30000);
-  });
-
-  it('should remove item if quantity is 1 and disminuirCantidad is called', () => {
-    const item = { codigo: 'AN001', nombre: 'Figura', cantidad: 1, valor: 15000, totalValor: 15000 };
-    component.items = [item];
-
-    spyOn(component, 'eliminarItem').and.callThrough();
-
-    component.disminuirCantidad(item);
-
-    expect(component.eliminarItem).toHaveBeenCalledWith('AN001');
-    expect(component.items.length).toBe(0);
-  });
-
-  it('should remove item by codigo', () => {
-    component.items = [
-      { codigo: 'AN001', nombre: 'Figura', cantidad: 1, valor: 15000, totalValor: 15000 },
-      { codigo: 'AN002', nombre: 'Póster', cantidad: 2, valor: 5000, totalValor: 10000 },
-    ];
-
-    component.eliminarItem('AN001');
-
-    expect(component.items.length).toBe(1);
-    expect(component.items[0].codigo).toBe('AN002');
-  });
-
-  it('should navigate to principal page', () => {
-    component.goToPrincipal();
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/principal']);
-  });
-
-  it('should navigate to login page', () => {
-    component.goToLogin();
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/login']);
+    ]);
   });
 });

@@ -5,7 +5,7 @@ import { CapacitorHttp, HttpOptions, HttpResponse } from '@capacitor/core';
   providedIn: 'root',
 })
 export class CamaraService {
-  private readonly baseUrl = 'https://api.jikan.moe/v4'; // Corregir la URL base
+  private readonly baseUrl = 'https://api.jikan.moe/v4'; 
 
   constructor() {}
 
