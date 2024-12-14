@@ -1,6 +1,6 @@
 {
   "name": "animanga",
-  "version": "0.0.1",
+  "version": "2.0",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -64,6 +64,7 @@
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
     "@typescript-eslint/utils": "^8.17.0",
+    "cypress": "latest",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsdoc": "^48.2.1",
@@ -78,8 +79,7 @@
     "postcss-loader": "^8.1.1",
     "sass": "^1.81.0",
     "sass-loader": "^16.0.3",
-    "typescript": "^5.5.4",
-    "cypress": "latest"
+    "typescript": "^5.5.4"
   },
   "description": "An Ionic project"
 }

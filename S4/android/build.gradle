@@ -1,15 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.2.1'
-        classpath 'com.google.gms:google-services:4.4.0' // Para Firebase u otros servicios de Google
+        classpath 'com.google.gms:google-services:4.4.0'
 
-        // NOTA: No coloques aquí las dependencias de tu aplicación; deben ir en el build.gradle del módulo.
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
@@ -22,7 +24,6 @@ allprojects {
     }
 }
 
-// Tarea para limpiar el proyecto
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

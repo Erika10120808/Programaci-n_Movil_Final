@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './guards/auth.guard';
 
 
+
 jeepSqlite(window);
 
 @NgModule({
@@ -22,6 +23,7 @@ jeepSqlite(window);
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+
 
 ],
   providers: [
