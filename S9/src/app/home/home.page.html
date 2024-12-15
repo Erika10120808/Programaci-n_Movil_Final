@@ -1,0 +1,77 @@
+
+<ion-content class="home-content">
+  <ion-card class="card-style">
+    <ion-card-header class="card-header">
+      
+      <h1>Bienvenido</h1>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input id="email" [(ngModel)]="email" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input id="nombre" [(ngModel)]="nombre" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input id="apellido" [(ngModel)]="apellido" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nivel Educacional</ion-label>
+        <ion-select [(ngModel)]="nivelEducacional" required>
+          <ion-select-option value="secundaria">Secundaria</ion-select-option>
+          <ion-select-option value="universidad">Universidad</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <label class="date-label">Fecha de Nacimiento</label>
+      <ion-item>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="fechaNacimiento"
+          placeholder="Selecciona una fecha"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input
+          type="password"
+          [(ngModel)]="password"
+          required
+          minlength="4"
+          maxlength="12"
+          placeholder="Ingresa tu contraseña"
+        ></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" (click)="clearForm()">Limpiar</ion-button>
+      <ion-button expand="block" (click)="registrarUsuario()">Registrar</ion-button>
+      <ion-button expand="block" (click)="goToLogin()">Volver</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card
+    *ngIf="nombre || apellido || nivelEducacional || fechaNacimiento || email || password"
+    class="card-style"
+  >
+    <ion-card-header class="card-header">Datos Ingresados</ion-card-header>
+    <ion-card-content>
+      <p>Correo Electrónico: {{ email }}</p>
+      <p>Nombre: {{ nombre }}</p>
+      <p>Apellido: {{ apellido }}</p>
+      <p>Nivel Educacional: {{ nivelEducacional }}</p>
+      <p *ngIf="fechaNacimiento">Fecha de Nacimiento: {{ fechaNacimiento | date:'dd/MM/yyyy' }}</p>
+      <p>Contraseña: {{ password }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

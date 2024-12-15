@@ -1,0 +1,42 @@
+.home-content {
+  background-color: #f7e8f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-style {
+  background-color: white;
+  color: #f497e5;
+  width: 90%;
+  max-width: 400px;
+  margin: 10px auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  font-size: 1.5em;
+  color: #f497e5;
+  text-align: center;
+}
+
+.date-label {
+  margin: 10px 0 0 15px;
+  font-size: 0.9em;
+  color: #f497e5;
+}
+
+ion-label,
+ion-input,
+ion-select,
+ion-button {
+  --color: #f497e5;
+}
+
+ion-button {
+  --background: #f497e5;
+  --background-activated: #f497e5;
+  --background-hover: #f7c7e6;
+  color: white;
+}

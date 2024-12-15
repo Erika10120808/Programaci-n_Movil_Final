@@ -1,0 +1,7 @@
+{
+  "name": "animanga",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,98 @@
+ion-content {
+    --background: #fdeef4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  ion-card {
+    background-color: #ffe6eb;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 15px;
+    color: #5a5a5a;
+  }
+  
+  ion-card-header {
+    background-color: #ffccd5;
+    border-radius: 10px 10px 0 0;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  ion-card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #e75480;
+  }
+  
+  ion-card-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  ion-item {
+    background: #ffe6eb;
+    border-radius: 8px;
+    margin: 5px 0;
+    --color: #5a5a5a;
+  }
+  
+  ion-label h2 {
+    font-size: 1.2em;
+    color: #d47b92;
+    font-weight: bold;
+  }
+  
+  ion-label p {
+    font-size: 0.9em;
+    color: #a66a7f;
+  }
+  
+  ion-checkbox {
+    --background: #ffccd5;
+    --border-color: #ffccd5;
+    --checkmark-color: #e75480;
+  }
+  
+  ion-button {
+    --background: #e75480;
+    --background-hover: #ff9b9f;
+    color: white;
+    margin-top: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+  }
+  
+  .carrito-compras {
+    --background: #e75480;
+    --background-hover: #ff9b9f;
+    width: 35px;
+    height: 35px;
+
+
+  }
+
+  .menu-container{
+    --background: #f497e5;
+    --background-hover: #f7c7e6;
+    --background-activated: #f497e5;
+    color: white;
+  }
+
+  .icon-cart{
+    width: 35px;
+    height: 35px;
+    color: black;
+  }
+
+  ion-menu::part(backdrop) {
+    background-color: rgba(255, 0, 255, 0.5);
+  }
+  
+  ion-menu::part(container) {
+    border-radius: 0 20px 20px 0;
+  
+    box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
+  }
