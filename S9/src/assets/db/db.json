@@ -11,8 +11,8 @@
         { "column": "email", "value": "TEXT NOT NULL UNIQUE" },
         { "column": "nombre", "value": "TEXT NOT NULL" },
         { "column": "apellido", "value": "TEXT NOT NULL" },
-        { "column": "nivel_educacional", "value": "TEXT NOT NULL" },
-        { "column": "fecha_nacimiento", "value": "TEXT NOT NULL" },
+        { "column": "nivel_educacional", "value": "TEXT" },
+        { "column": "fecha_nacimiento", "value": "TEXT" },
         { "column": "password", "value": "TEXT NOT NULL" }
       ]
     },

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button> 
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="takePicture()">Tomar Foto
@@ -9,11 +9,10 @@
       </ion-button>
     </ion-buttons>
     <ion-title>Principal</ion-title>
-  
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding"> 
+<ion-content class="ion-padding">
 
   <ion-card>
     <ion-card-header>
@@ -49,23 +48,19 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="mangaDescriptions && mangaDescriptions.length > 0">
-    <ion-card-header>
-      <ion-card-title>Descripciones de Mangas</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let description of mangaDescriptions">
-          <p>{{ description }}</p>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+  <ion-button expand="block" color="success" (click)="irAlCarrito()">
+    <ion-icon slot="start" name="cart-outline"></ion-icon>
+    Ver Carrito
+  </ion-button>
 
-  <ion-card *ngIf="mangaDescriptions && mangaDescriptions.length === 0">
-    <ion-card-content>
-      <p>No se encontraron resultados para "{{ searchQuery }}"</p>
-    </ion-card-content>
-  </ion-card>
+  <ion-button expand="block" color="primary" (click)="takePicture()">
+    <ion-icon slot="start" name="camera-outline"></ion-icon>
+    Abrir Cámara
+  </ion-button>
+
+  <ion-button expand="block" color="secondary" (click)="getLocation()">
+    <ion-icon slot="start" name="location-outline"></ion-icon>
+    Obtener Ubicación
+  </ion-button>
 
 </ion-content>

@@ -4,17 +4,17 @@ import { AlertController } from '@ionic/angular';
 import { SqliteService } from '../services/sqlite.service';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.page.html',
-    styleUrls: ['./home.page.scss'],
-    standalone: false
+  selector: 'app-home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
+  standalone: false
 })
 export class HomePage {
   email: string = '';
   nombre: string = '';
   apellido: string = '';
   nivelEducacional: string = '';
-  fechaNacimiento: Date | null = null;
+  fechaNacimiento: string = '';
   password: string = '';
 
   constructor(
@@ -23,21 +23,30 @@ export class HomePage {
     private alertController: AlertController
   ) {}
 
-  async registrarUsuario() {
-    if (!this.email || !this.nombre || !this.apellido || !this.nivelEducacional || !this.fechaNacimiento || !this.password) {
-      await this.showAlert('Campos incompletos', 'Por favor, completa todos los campos antes de continuar.');
-      return;
-    }
+  isFormValid(): boolean {
+    return (
+      this.email.trim() !== '' &&
+      this.nombre.trim() !== '' &&
+      this.apellido.trim() !== '' &&
+      String(this.password).trim() !== '' &&
+      this.isValidEmail(this.email) &&
+      this.isValidPassword(this.password)
+    );
+  }
 
+  isValidEmail(email: string): boolean {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailPattern.test(this.email)) {
-      await this.showAlert('Error', 'Por favor, introduce un correo electrónico válido.');
-      return;
-    }
+    return emailPattern.test(email);
+  }
 
+  isValidPassword(password: string | number): boolean {
     const passwordPattern = /^\d{4}$/;
-    if (!passwordPattern.test(this.password)) {
-      await this.showAlert('Error', 'La contraseña debe tener exactamente 4 dígitos numéricos.');
+    return passwordPattern.test(String(password));
+  }
+
+  async registrarUsuario() {
+    if (!this.isFormValid()) {
+      await this.showAlert('Campos incompletos', 'Por favor, completa todos los campos obligatorios antes de continuar.');
       return;
     }
 
@@ -45,16 +54,23 @@ export class HomePage {
       email: this.email,
       nombre: this.nombre,
       apellido: this.apellido,
-      nivelEducacional: this.nivelEducacional,
-      fechaNacimiento: this.fechaNacimiento.toISOString().split('T')[0],
-      password: this.password,
+      nivelEducacional: this.nivelEducacional || null,
+      fechaNacimiento: this.fechaNacimiento || null,
+      password: String(this.password),
     };
 
     try {
       const result = await this.sqlite.create(
         'usuarios',
         ['email', 'nombre', 'apellido', 'nivel_educacional', 'fecha_nacimiento', 'password'],
-        [usuario.email, usuario.nombre, usuario.apellido, usuario.nivelEducacional, usuario.fechaNacimiento, usuario.password]
+        [
+          usuario.email,
+          usuario.nombre,
+          usuario.apellido,
+          usuario.nivelEducacional,
+          usuario.fechaNacimiento,
+          usuario.password
+        ]
       );
       console.log('Usuario registrado:', result);
 
@@ -72,7 +88,7 @@ export class HomePage {
     this.nombre = '';
     this.apellido = '';
     this.nivelEducacional = '';
-    this.fechaNacimiento = null;
+    this.fechaNacimiento = '';
     this.password = '';
   }
 

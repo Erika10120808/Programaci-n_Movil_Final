@@ -4,8 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { CartService } from '../services/cart.service';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { Photo } from '@capacitor/camera';
-
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-principal',
@@ -15,11 +14,11 @@ import { Photo } from '@capacitor/camera';
 })
 export class PrincipalPage {
   animeItems = [
-    { nombre: 'Figura de Naruto', codigo: 'AN001', valor: 15000, seleccionado: false, cantidad: 1, total: 15000, totalValor: 0 },
-    { nombre: 'Póster de One Piece', codigo: 'AN002', valor: 5000, seleccionado: false, cantidad: 1, total: 5000, totalValor: 0 },
-    { nombre: 'Camiseta de Attack on Titan', codigo: 'AN003', valor: 12000, seleccionado: false, cantidad: 1, total: 12000, totalValor: 0 },
-    { nombre: 'Taza de My Hero Academia', codigo: 'AN004', valor: 8000, seleccionado: false, cantidad: 1, total: 8000, totalValor: 0 },
-    { nombre: 'Llaveros de Demon Slayer', codigo: 'AN005', valor: 3000, seleccionado: false, cantidad: 1, total: 3000, totalValor: 0 },
+    { nombre: 'Figura de Naruto', codigo: 'AN001', valor: 15000, seleccionado: false },
+    { nombre: 'Póster de One Piece', codigo: 'AN002', valor: 5000, seleccionado: false },
+    { nombre: 'Camiseta de Attack on Titan', codigo: 'AN003', valor: 12000, seleccionado: false },
+    { nombre: 'Taza de My Hero Academia', codigo: 'AN004', valor: 8000, seleccionado: false },
+    { nombre: 'Llaveros de Demon Slayer', codigo: 'AN005', valor: 3000, seleccionado: false },
   ];
 
   public carrito: any[] = [];
@@ -31,14 +30,13 @@ export class PrincipalPage {
     private http: HttpClient,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private cartService: CartService,
+    private cartService: CartService
   ) {}
 
   async agregarAlCarrito() {
     const seleccionados = this.animeItems.filter((item) => item.seleccionado);
     if (seleccionados.length > 0) {
       this.carrito.push(...seleccionados);
-      console.log('Carrito actual:', this.carrito);
       this.cartService.agregarAlCarrito(this.carrito);
       const toast = await this.toastCtrl.create({
         message: 'Artículos agregados al carrito.',
@@ -58,6 +56,32 @@ export class PrincipalPage {
 
   irAlCarrito() {
     this.router.navigate(['/carrito'], { state: { carrito: this.carrito } });
+  }
+
+  async takePicture() {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+      });
+      console.log('Foto capturada:', image.webPath);
+      alert(`Foto capturada: ${image.webPath}`);
+    } catch (error) {
+      console.error('Error al abrir la cámara', error);
+    }
+  }
+
+  async getLocation() {
+    try {
+      const coordinates = await Geolocation.getCurrentPosition();
+      console.log('Ubicación actual:', coordinates);
+      alert(`Latitud: ${coordinates.coords.latitude}, Longitud: ${coordinates.coords.longitude}`);
+    } catch (error) {
+      console.error('Error al obtener la ubicación', error);
+      alert('No se pudo obtener la ubicación. Inténtalo nuevamente.');
+    }
   }
 
   goToLogin() {
@@ -97,22 +121,5 @@ export class PrincipalPage {
   clearSearch() {
     this.searchQuery = '';
     this.mangaDescriptions = [];
-  }
-
-  onCheckboxChange(item: any) {
-    console.log('Checkbox changed for item:', item);
-  }
-
- 
-  async takePicture() {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.Uri,
-      source: CameraSource.Camera,
-    });
-
-    const imageUrl = image.webPath;
-    console.log('Image URL:', imageUrl);
   }
 }
